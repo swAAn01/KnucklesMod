@@ -31,6 +31,7 @@ public class KnucklesItem : GrabbableObject
 
         screamPlayer.loop = true;
         screamPlayer.clip = scream;
+        screamPlayer.pitch = 0.7f;
     }
 
     // Update is called once per frame
@@ -51,7 +52,7 @@ public class KnucklesItem : GrabbableObject
                 {
                     noiseInterval = 1f;
                     timesPlayedWithoutTurningOff++;
-                    roundManager.PlayAudibleNoise(base.transform.position, 16f, 0.9f, timesPlayedWithoutTurningOff, noiseIsInsideClosedShip: false, 5);
+                    roundManager.PlayAudibleNoise(base.transform.position, 16f, 0.7f, timesPlayedWithoutTurningOff, noiseIsInsideClosedShip: false, 5);
                 }
                 else
                 {
