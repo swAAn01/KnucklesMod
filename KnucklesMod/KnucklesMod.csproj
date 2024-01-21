@@ -10,6 +10,8 @@
         <ApplicationIcon />
         <OutputType>Library</OutputType>
         <StartupObject />
+        <Authors>swAAn</Authors>
+        <Company>AmesBoys</Company>
     </PropertyGroup>
 
     <ItemGroup>
