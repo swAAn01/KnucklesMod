@@ -31,7 +31,7 @@ public class KnucklesItem : GrabbableObject
 
         screamPlayer.loop = true;
         screamPlayer.clip = scream;
-        screamPlayer.pitch = 0.7f;
+        screamPlayer.volume -= 0.3f;
     }
 
     // Update is called once per frame
