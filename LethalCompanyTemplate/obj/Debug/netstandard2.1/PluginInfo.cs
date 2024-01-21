@@ -4,6 +4,6 @@ namespace KnucklesMod
     {
         public const string PLUGIN_GUID = "KnucklesMod";
         public const string PLUGIN_NAME = "KnucklesMod";
-        public const string PLUGIN_VERSION = "1.4.0";
+        public const string PLUGIN_VERSION = "1.4.2";
     }
 }

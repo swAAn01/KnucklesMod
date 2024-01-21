@@ -2611,7 +2611,7 @@
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
-    "version": "1.4.0",
+    "version": "1.4.2",
     "restore": {
       "projectUniqueName": "C:\\Users\\jaesw\\OneDrive\\Desktop\\Lethal Company Mods\\KnucklesMod\\KnucklesModPlugin\\LethalCompanyTemplate-main\\LethalCompanyTemplate\\KnucklesMod.csproj",
       "projectName": "KnucklesMod",
