@@ -71,3 +71,4 @@ crashlytics-build.properties
 # Added by swAAn
 /KnucklesMod/obj
 /KnucklesMod/bin
+/KnucklesMod/NuGet.Config
