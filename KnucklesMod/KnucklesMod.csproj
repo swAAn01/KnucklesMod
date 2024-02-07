@@ -4,7 +4,7 @@
         <TargetFramework>netstandard2.1</TargetFramework>
         <AssemblyName>KnucklesMod</AssemblyName>
         <Description>Adds Knuckles as collectible scrap</Description>
-        <Version>1.4.3</Version>
+        <Version>2.0.1</Version>
         <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
         <LangVersion>latest</LangVersion>
         <ApplicationIcon />
@@ -35,17 +35,11 @@
       <Reference Include="BepInEx">
         <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Lethal Company\BepInEx\core\BepInEx.dll</HintPath>
       </Reference>
-      <Reference Include="BepInEx.MonoMod.HookGenPatcher">
-        <HintPath>..\..\..\..\..\..\..\AppData\Roaming\Thunderstore Mod Manager\DataFolder\LethalCompany\profiles\DevProfile\BepInEx\patchers\Evaisa-HookGenPatcher\BepInEx.MonoMod.HookGenPatcher\BepInEx.MonoMod.HookGenPatcher.dll</HintPath>
+      <Reference Include="LethalConfig">
+        <HintPath>..\..\..\..\..\..\AppData\Roaming\Thunderstore Mod Manager\DataFolder\LethalCompany\profiles\DevProfile\BepInEx\plugins\AinaVT-LethalConfig\LethalConfig\LethalConfig.dll</HintPath>
       </Reference>
       <Reference Include="LethalLib">
         <HintPath>..\..\..\..\..\..\AppData\Roaming\Thunderstore Mod Manager\DataFolder\LethalCompany\profiles\DevProfile\BepInEx\plugins\Evaisa-LethalLib\LethalLib\LethalLib.dll</HintPath>
-      </Reference>
-      <Reference Include="MonoMod">
-        <HintPath>..\..\..\..\..\..\..\AppData\Roaming\Thunderstore Mod Manager\DataFolder\LethalCompany\profiles\DevProfile\BepInEx\patchers\Evaisa-HookGenPatcher\BepInEx.MonoMod.HookGenPatcher\MonoMod.dll</HintPath>
-      </Reference>
-      <Reference Include="MonoMod.RuntimeDetour.HookGen">
-        <HintPath>..\..\..\..\..\..\..\AppData\Roaming\Thunderstore Mod Manager\DataFolder\LethalCompany\profiles\DevProfile\BepInEx\patchers\Evaisa-HookGenPatcher\BepInEx.MonoMod.HookGenPatcher\MonoMod.RuntimeDetour.HookGen.dll</HintPath>
       </Reference>
       <Reference Include="Unity.Netcode.Runtime">
         <HintPath>bin\Debug\netstandard2.1\Unity.Netcode.Runtime.dll</HintPath>

@@ -1,3 +1,4 @@
+using KnucklesMod;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,7 @@ public class KnucklesItem : GrabbableObject
     private static ILogger logger = Debug.unityLogger;
 
     public AudioClip scream; // sfx
-    public AudioSource screamPlayer; // AudioSource
+    public AudioSource screamPlayer;
 
     private bool isScared;
     private bool isScreaming;
@@ -16,9 +17,7 @@ public class KnucklesItem : GrabbableObject
     private int timesPlayedWithoutTurningOff;
 
     private const int LAYERMASK = 1 << 19;
-    private const float CHECK_RADIUS = 20f;
 
-    // Start is called before the first frame update
     public override void Start()
     {
         // GrabbableObject setup
@@ -27,17 +26,29 @@ public class KnucklesItem : GrabbableObject
         base.Start();
 
         isScreaming = false;
-        roundManager = UnityEngine.Object.FindObjectOfType<RoundManager>();
+        roundManager = FindObjectOfType<RoundManager>();
 
         screamPlayer.loop = true;
         screamPlayer.clip = scream;
-        screamPlayer.volume -= 0.3f;
+        screamPlayer.volume = KnucklesPlugin.screamVolume.Value;
     }
 
-    // Update is called once per frame
     public override void Update()
     {
         base.Update();
+
+        if (!KnucklesPlugin.screamNearEnemies.Value)
+        {
+            if (isScreaming)
+            {
+                screamPlayer.Stop();
+                isScreaming = false;
+                timesPlayedWithoutTurningOff = 0;
+            }
+            return;
+        }
+
+        screamPlayer.volume = KnucklesPlugin.screamVolume.Value;
 
         if (nearEnemy())
             isScared = true;
@@ -52,7 +63,7 @@ public class KnucklesItem : GrabbableObject
                 {
                     noiseInterval = 1f;
                     timesPlayedWithoutTurningOff++;
-                    roundManager.PlayAudibleNoise(base.transform.position, 16f, 0.7f, timesPlayedWithoutTurningOff, noiseIsInsideClosedShip: false, 5);
+                    roundManager.PlayAudibleNoise(base.transform.position, 16f, KnucklesPlugin.screamVolume.Value, timesPlayedWithoutTurningOff, noiseIsInsideClosedShip: false, 5);
                 }
                 else
                 {
@@ -83,7 +94,7 @@ public class KnucklesItem : GrabbableObject
 
         Vector3 pos = this.transform.position;
 
-        bool result = Physics.CheckSphere(pos, CHECK_RADIUS, LAYERMASK);
+        bool result = Physics.CheckSphere(pos, KnucklesPlugin.enemyCheckRadius.Value, LAYERMASK);
 
         base.gameObject.layer = init;
         return result;

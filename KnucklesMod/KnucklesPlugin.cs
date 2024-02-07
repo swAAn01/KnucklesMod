@@ -10,11 +10,24 @@ namespace KnucklesMod
     public class KnucklesPlugin : BaseUnityPlugin
     {
         public static AssetBundle knuckles_bundle;
+
+        public static BepInEx.Configuration.ConfigEntry<bool> screamNearEnemies;
+        public static BepInEx.Configuration.ConfigEntry<float> screamVolume;
+        public static BepInEx.Configuration.ConfigEntry<float> enemyCheckRadius;
+
         private void Awake()
         {
+            screamNearEnemies = Config.Bind("General", "Scream Near Enemies", true, "Whether or not Knucks screams when nearby enemies.");
+            screamVolume = Config.Bind("General", "Scream Volume", 0.7f, "Quantifies the level of Knucks' fear around enemies.");
+            enemyCheckRadius = Config.Bind("General", "Enemy Fear Radius", 20f, "How close an enemy needs to be for Knucks to be afraid of it.");
+
+            // check if using LethalConfig
+            if (BepInEx.Bootstrap.Chainloader.PluginInfos.ContainsKey("ainavt.lc.lethalconfig"))
+                LethalConfiguration.setupLethalConfig();
+
             string sAssemblyLocation = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
 
-            knuckles_bundle = AssetBundle.LoadFromFile(Path.Combine(sAssemblyLocation, "modassets"));
+            knuckles_bundle = AssetBundle.LoadFromFile(Path.Combine(sAssemblyLocation, "knucklesbundle"));
             if (knuckles_bundle == null)
             {
                 Logger.LogError("Failed to load custom assets.");
