@@ -30,7 +30,6 @@ public class KnucklesItem : GrabbableObject
 
         screamPlayer.loop = true;
         screamPlayer.clip = scream;
-        screamPlayer.volume = KnucklesPlugin.screamVolume.Value;
     }
 
     public override void Update()
@@ -44,11 +43,10 @@ public class KnucklesItem : GrabbableObject
                 screamPlayer.Stop();
                 isScreaming = false;
                 timesPlayedWithoutTurningOff = 0;
+                Debug.Log("Stopped Screaming");
             }
             return;
         }
-
-        screamPlayer.volume = KnucklesPlugin.screamVolume.Value;
 
         if (nearEnemy())
             isScared = true;
@@ -57,6 +55,8 @@ public class KnucklesItem : GrabbableObject
 
         if (isScared && this.isHeld)
         {
+            screamPlayer.volume = KnucklesPlugin.screamVolume.Value;
+
             if (isScreaming)
             {
                 if (noiseInterval <= 0f)
@@ -74,6 +74,7 @@ public class KnucklesItem : GrabbableObject
             {
                 screamPlayer.Play();
                 isScreaming = true;
+                Debug.Log("Started Screaming");
             }
         }
         else
@@ -83,6 +84,7 @@ public class KnucklesItem : GrabbableObject
                 screamPlayer.Stop();
                 isScreaming = false;
                 timesPlayedWithoutTurningOff = 0;
+                Debug.Log("Stopped Screaming");
             }
         }
     }
